@@ -2,11 +2,11 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class GTACasinoClicker {
-    public static int x = 152, y = 28;      //Standard
+    private int x = 152, y = 28;      //Standardwerte
     public static Robot bot;
-    public static int arrayListCapacity = 1;
-    public static GlobalKeyListener globalKeyListener;
-    public static boolean configMode = false;
+    private int arrayListCapacity = 1;
+    private GlobalKeyListener globalKeyListener;
+    private boolean configMode = false;
 
     public static void main(String[] args) {
         new GTACasinoClicker();
@@ -19,8 +19,8 @@ public class GTACasinoClicker {
             e.printStackTrace();
         }
     }
-    public static void startKeyListener(){
-        ArrayList<ArrayList<Integer>> keybinds = new ArrayList<ArrayList<Integer>>(arrayListCapacity); //Spalten, einzelne Keybinds
+    public void startKeyListener(){
+        ArrayList<ArrayList<Integer>> keybinds = new ArrayList<>(arrayListCapacity); //Spalten, einzelne Keybinds
         for (int i = 0; i<arrayListCapacity; i++){
             keybinds.add(new ArrayList<Integer>()); //Zeilen, int key und int modifier
         }
@@ -30,10 +30,10 @@ public class GTACasinoClicker {
         globalKeyListener = new GlobalKeyListener(keybinds);
         globalKeyListener.start();
     }
-    public static void stopKeyListener(){
+    public void stopKeyListener(){
         globalKeyListener.interrupt();
     }
-    public static void setCoords(){
+    public void setCoords(){
         PointerInfo pointerInfo = MouseInfo.getPointerInfo();
         Point point = pointerInfo.getLocation();
         x = (int) point.getX();
@@ -42,5 +42,17 @@ public class GTACasinoClicker {
 
         System.out.println("setX: " + x + "  setY: " + y + "  Red: " + bot.getPixelColor(x, y).getRed() + "  Green: " +
                 bot.getPixelColor(x, y).getGreen() + "  Blue: " + bot.getPixelColor(x, y).getBlue());
+    }
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
+    }
+    public int getArrayListCapacity() {
+        return arrayListCapacity;
+    }
+    public boolean isConfigMode() {
+        return configMode;
     }
 }

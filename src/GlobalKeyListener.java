@@ -9,11 +9,15 @@ import java.util.logging.Logger;
 
 public class GlobalKeyListener extends Thread {
 
-    public ArrayList<ArrayList<Integer>> keybinds = new ArrayList<ArrayList<Integer>>();
-    public ArrayList<ArrayList<Boolean>> keybindactive = new ArrayList<ArrayList<Boolean>>(GTACasinoClicker.arrayListCapacity);
+    private ArrayList<ArrayList<Integer>> keybinds;
+    private ArrayList<ArrayList<Boolean>> keybindactive;
+    private GTACasinoClicker cc;
+    private boolean active = false;
 
     public void run(){
-        for (int i = 0; i<GTACasinoClicker.arrayListCapacity; i++){
+        cc = new GTACasinoClicker();
+        keybindactive = new ArrayList<ArrayList<Boolean>>(cc.getArrayListCapacity());
+        for (int i = 0; i<cc.getArrayListCapacity(); i++){
             keybinds.add(new ArrayList<Integer>()); //Zeilen, int key und int modifier booleans
             keybindactive.add(new ArrayList<Boolean>()); //Zeilen, int key und int modifier booleans
             for (int j = 0; j < 2; j++){
@@ -99,14 +103,20 @@ public class GlobalKeyListener extends Thread {
     }
 
     public void execute(int arrayPos){
+        try {
+            Thread.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         switch (arrayPos){
             case 0:
-                if(!GTACasinoClicker.configMode) {
-                    System.out.println("Screen detection active");
+                if(!cc.isConfigMode() && !active) {
+                    active = true;
                     new Thread().start();
-                } else {
+                } else if(cc.isConfigMode() && !active){
+                    active = true;
                     System.out.println("Config Mode active");
-                    GTACasinoClicker.setCoords();
+                    cc.setCoords();
                 }
                 break;
         }

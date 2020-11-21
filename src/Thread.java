@@ -3,15 +3,19 @@ import java.awt.event.KeyEvent;
 
 public class Thread extends java.lang.Thread {
     private Color color;
+    private int x, y;
     @Override
     public void run() {
+        GTACasinoClicker cc = new GTACasinoClicker();
+        x = cc.getX();
+        y = cc.getY();
         do {
             try {
-                Thread.sleep(2);
+                Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            color = GTACasinoClicker.bot.getPixelColor(GTACasinoClicker.x, GTACasinoClicker.y);
+            color = GTACasinoClicker.bot.getPixelColor(x, y);
         } while (color.getRed() != color.getBlue() || color.getRed() != color.getGreen() || color.getRed() != 229);
         long time = System.nanoTime();
 
@@ -22,11 +26,13 @@ public class Thread extends java.lang.Thread {
             System.exit(-1);
         }
 
-        GTACasinoClicker.bot.keyPress(KeyEvent.VK_S);
+        cc.bot.keyPress(KeyEvent.VK_S);
         GTACasinoClicker.bot.keyRelease(KeyEvent.VK_S);
 
         double d = ((System.nanoTime() - time) / 1000000000.0);
         System.out.println(d + " Sekunden");
 
+        cc.stopKeyListener();
+        this.interrupt();
     }
 }
