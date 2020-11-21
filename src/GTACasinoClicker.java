@@ -1,23 +1,57 @@
 import java.awt.*;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class GTACasinoClicker {
-    public static int x = 152, y = 28;      //Standard
-    public static Robot bot;
-    public static int arrayListCapacity = 1;
-    public static GlobalKeyListener globalKeyListener;
-    public static boolean configMode = false;
+    static int x = 152, y = 28;      //Standard
+    static Robot bot;
+    static int arrayListCapacity = 1;
+    static GlobalKeyListener globalKeyListener;
+    static boolean configMode = false;
+    private Scanner scanner = new Scanner(System.in);
+    private String fileName = "/config.json";
 
     public static void main(String[] args) {
         new GTACasinoClicker();
     }
     public GTACasinoClicker(){
+        System.out.println("Reading config: " + fileName);
+        try {
+            JSONParser parser = new JSONParser();
+            JSONArray a = (JSONArray) parser.parse(new FileReader("src/config.json"));
+
+            for (Object o : a) {
+                JSONObject jsonObject = (JSONObject) o;
+
+                x = (String) jsonObject.get("X");
+                System.out.println(x);
+
+                y = (String) jsonObject.get("Y");
+                System.out.println(y);
+
+                Thread.time = (long) jsonObject.get("Time");
+                System.out.println(Thread.time);
+            }
+        } catch (ParseException | IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.print("Auslösen nach (Millisekunden): ");
+        Thread.time = scanner.nextInt();
         startKeyListener();
         try {
             bot = new Robot();
         } catch (AWTException e) {
             e.printStackTrace();
         }
+        System.out.println();
+        System.out.println("Hotkey: '^'");
     }
     public static void startKeyListener(){
         ArrayList<ArrayList<Integer>> keybinds = new ArrayList<ArrayList<Integer>>(arrayListCapacity); //Spalten, einzelne Keybinds

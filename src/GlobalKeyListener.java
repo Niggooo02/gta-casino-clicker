@@ -9,8 +9,8 @@ import java.util.logging.Logger;
 
 public class GlobalKeyListener extends Thread {
 
-    public ArrayList<ArrayList<Integer>> keybinds = new ArrayList<ArrayList<Integer>>();
-    public ArrayList<ArrayList<Boolean>> keybindactive = new ArrayList<ArrayList<Boolean>>(GTACasinoClicker.arrayListCapacity);
+    ArrayList<ArrayList<Integer>> keybinds = new ArrayList<ArrayList<Integer>>();
+    ArrayList<ArrayList<Boolean>> keybindactive = new ArrayList<ArrayList<Boolean>>(GTACasinoClicker.arrayListCapacity);
 
     public void run(){
         for (int i = 0; i<GTACasinoClicker.arrayListCapacity; i++){
@@ -39,11 +39,6 @@ public class GlobalKeyListener extends Thread {
 
             @Override
             public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
-
-//                if (nativeKeyEvent.getKeyCode() == 43){
-//                    SaveBucket.startSaveBucket();
-//                }
-
                 int i = 0;
                 for (ArrayList<Integer> keys : keybinds){
                     int j = 0;
@@ -103,7 +98,8 @@ public class GlobalKeyListener extends Thread {
             case 0:
                 if(!GTACasinoClicker.configMode) {
                     System.out.println("Screen detection active");
-                    new Thread().start();
+                    Thread t1 = new Thread();
+                    t1.start();
                 } else {
                     System.out.println("Config Mode active");
                     GTACasinoClicker.setCoords();
