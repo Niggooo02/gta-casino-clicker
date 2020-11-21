@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class GlobalKeyListener extends Threada {
+public class GlobalKeyListener extends Threadb {
 
     public ArrayList<ArrayList<Integer>> keybinds = new ArrayList<ArrayList<Integer>>();
     public ArrayList<ArrayList<Boolean>> keybindactive = new ArrayList<ArrayList<Boolean>>(GTACasinoClicker.arrayListCapacity);
