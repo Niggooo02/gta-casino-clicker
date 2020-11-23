@@ -16,7 +16,7 @@ public class Thread extends java.lang.Thread {
             color = GTACasinoClicker.bot.getPixelColor(GTACasinoClicker.x, GTACasinoClicker.y);
             System.out.println("R: " + color.getRed() + " G: " + color.getGreen() + " B: " + color.getBlue());
         } while (color.getRed() + color.getBlue() + color.getGreen() != 698);   //Ingame: 687, Screenshot: 698
-        long time = System.nanoTime();
+        long sysNanoTime = System.nanoTime();
 
         try {
             sleep(time);    //+ ca 25ms Laufzeit
@@ -28,7 +28,7 @@ public class Thread extends java.lang.Thread {
         r.keyPress(KeyEvent.VK_S);
         r.keyRelease(KeyEvent.VK_S);
 
-        double d = ((System.nanoTime() - time) / 1000000000.0);
+        double d = ((System.nanoTime() - sysNanoTime) / 1000000000.0);
         System.out.println(d + " Sekunden");
 
     }
