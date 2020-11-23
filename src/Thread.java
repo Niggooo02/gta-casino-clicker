@@ -29,7 +29,6 @@ public class Thread extends java.lang.Thread {
         r.keyRelease(KeyEvent.VK_S);
 
         double d = ((System.nanoTime() - sysNanoTime) / 1000000000.0);
-        System.out.println(d + " Sekunden");
-
+        System.err.println("\nTaste wurde nach " + d + " Sekunden betätigt");
     }
 }
