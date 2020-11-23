@@ -3,6 +3,7 @@ import java.awt.event.KeyEvent;
 
 public class Thread extends java.lang.Thread {
     private Color color;
+    private int time = 3950;
     @Override
     public void run() {
         Robot r = new GTACasinoClicker().bot;
@@ -18,7 +19,7 @@ public class Thread extends java.lang.Thread {
         long time = System.nanoTime();
 
         try {
-            sleep(3950);
+            sleep(time);    //+ ca 25ms Laufzeit
         } catch (InterruptedException e){
             e.printStackTrace();
             System.exit(-1);
