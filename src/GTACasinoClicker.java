@@ -1,10 +1,12 @@
+import org.jnativehook.keyboard.NativeKeyEvent;
+
 import java.awt.*;
 import java.util.ArrayList;
 
 public class GTACasinoClicker {
     public static int x = 152, y = 28;      //Standard
     public static Robot bot;
-    public static int arrayListCapacity = 1;
+    public static int arrayListCapacity = 2;
     public static GlobalKeyListener globalKeyListener;
     public static boolean configMode = false;
 
@@ -26,6 +28,8 @@ public class GTACasinoClicker {
         }
         keybinds.get(0).add(0, Integer.parseInt("43")); //43: ^
         keybinds.get(0).add(1, Integer.parseInt("-1")); //-1: nichts
+        keybinds.get(1).add(0, NativeKeyEvent.VC_CONTROL); // : Strg
+        keybinds.get(1).add(1, NativeKeyEvent.VC_Y); // : Y
 
         globalKeyListener = new GlobalKeyListener(keybinds);
         globalKeyListener.start();

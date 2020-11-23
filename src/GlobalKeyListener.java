@@ -3,6 +3,7 @@ import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,8 +12,10 @@ public class GlobalKeyListener extends Thread {
 
     public ArrayList<ArrayList<Integer>> keybinds = new ArrayList<ArrayList<Integer>>();
     public ArrayList<ArrayList<Boolean>> keybindactive = new ArrayList<ArrayList<Boolean>>(GTACasinoClicker.arrayListCapacity);
+    private Runtime runtime;
 
     public void run(){
+        runtime = Runtime.getRuntime();
         for (int i = 0; i<GTACasinoClicker.arrayListCapacity; i++){
             keybinds.add(new ArrayList<Integer>()); //Zeilen, int key und int modifier booleans
             keybindactive.add(new ArrayList<Boolean>()); //Zeilen, int key und int modifier booleans
@@ -109,6 +112,14 @@ public class GlobalKeyListener extends Thread {
                     GTACasinoClicker.setCoords();
                 }
                 break;
+            case 1:
+                System.out.println("GTA wird beendet");
+                try {
+                    runtime.exec("cmd /c taskkill /IM GTA5.exe /f");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                System.exit(0);
         }
     }
 

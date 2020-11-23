@@ -13,7 +13,8 @@ public class Thread extends java.lang.Thread {
                 e.printStackTrace();
             }
             color = GTACasinoClicker.bot.getPixelColor(GTACasinoClicker.x, GTACasinoClicker.y);
-        } while (color.getRed() + color.getBlue() + color.getGreen() != 687);
+            System.out.println("R: " + color.getRed() + " G: " + color.getGreen() + " B: " + color.getBlue());
+        } while (color.getRed() + color.getBlue() + color.getGreen() != 698);   //Ingame: 687, Screenshot: 698
         long time = System.nanoTime();
 
         try {
@@ -29,6 +30,5 @@ public class Thread extends java.lang.Thread {
         double d = ((System.nanoTime() - time) / 1000000000.0);
         System.out.println(d + " Sekunden");
 
-        System.exit(0);
     }
 }
