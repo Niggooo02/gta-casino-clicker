@@ -115,7 +115,7 @@ public class GlobalKeyListener extends Thread {
             case 1:
                 System.out.println("GTA wird beendet");
                 try {
-                    runtime.exec("cmd /c taskkill /IM GTA5.exe /f");
+                    runtime.exec("cmd /c taskkill /F /IM GTA5.exe");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
