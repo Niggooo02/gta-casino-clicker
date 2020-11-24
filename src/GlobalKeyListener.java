@@ -113,12 +113,14 @@ public class GlobalKeyListener extends Thread {
                 }
                 break;
             case 1:
+                long nanoTime = System.nanoTime();
                 System.out.println("GTA wird beendet");
                 try {
                     runtime.exec("cmd /c taskkill /F /IM GTA5.exe");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                System.out.println("Zeit zum beenden: " + (System.nanoTime() - nanoTime) / 1000000.0 + " Millisekunden");
                 System.exit(0);
         }
     }
