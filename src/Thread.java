@@ -3,7 +3,7 @@ import java.awt.event.KeyEvent;
 
 public class Thread extends java.lang.Thread {
     private Color color;
-    private int time = 3950;
+    private int time = 2050;
     @Override
     public void run() {
         Robot r = new GTACasinoClicker().bot;
@@ -14,8 +14,8 @@ public class Thread extends java.lang.Thread {
                 e.printStackTrace();
             }
             color = GTACasinoClicker.bot.getPixelColor(GTACasinoClicker.x, GTACasinoClicker.y);
-            System.out.println("R: " + color.getRed() + " G: " + color.getGreen() + " B: " + color.getBlue());
-        } while (color.getRed() + color.getBlue() + color.getGreen() != 698);   //Ingame: 687, Screenshot: 698
+            //System.out.println("R: " + color.getRed() + " G: " + color.getGreen() + " B: " + color.getBlue());
+        } while (color.getRed() + color.getBlue() + color.getGreen() != 687);   //Ingame: 687, Screenshot: 698
         long sysNanoTime = System.nanoTime();
 
         try {
@@ -29,6 +29,6 @@ public class Thread extends java.lang.Thread {
         r.keyRelease(KeyEvent.VK_S);
 
         double d = ((System.nanoTime() - sysNanoTime) / 1000000000.0);
-        System.err.println("\nTaste wurde nach " + d + " Sekunden betätigt");
+        System.err.println("\nTaste wurde nach " + d + " Sekunden betätigt (+" + (d - (time / 1000.0)) * 1000 + " Millisekunden)\n");
     }
 }
