@@ -2,6 +2,7 @@ import org.jnativehook.keyboard.NativeKeyEvent;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GTACasinoClicker {
     public static int x = 152, y = 28;      //Standard
@@ -9,11 +10,23 @@ public class GTACasinoClicker {
     public static int arrayListCapacity = 2;
     public static GlobalKeyListener globalKeyListener;
     public static boolean configMode = false;
+    private static Scanner sc;
 
     public static void main(String[] args) {
+        System.err.println("Kompatibilität: GTA V im Vollbildmodus, nur ein Monitor, FHD / 1920x1080px\n");
+        sc = new Scanner(System.in);
+        System.out.print("Zeit, die gewartet werden soll (in Millisekunden, z.B. 2050): ");
+        Thread.time = sc.nextInt();
+
         new GTACasinoClicker();
+
+
+        System.out.println("\nHOTKEYS:");
+        System.out.println("'^':\t\tScreen Reader aktivieren");
+        System.out.println("'Strg' + 'Y':\tGTA force quit");
+        System.out.println();
     }
-    public GTACasinoClicker(){
+    public GTACasinoClicker() {
         startKeyListener();
         try {
             bot = new Robot();
@@ -21,7 +34,7 @@ public class GTACasinoClicker {
             e.printStackTrace();
         }
     }
-    public static void startKeyListener(){
+    public static void startKeyListener() {
         ArrayList<ArrayList<Integer>> keybinds = new ArrayList<ArrayList<Integer>>(arrayListCapacity); //Spalten, einzelne Keybinds
         for (int i = 0; i<arrayListCapacity; i++){
             keybinds.add(new ArrayList<Integer>()); //Zeilen, int key und int modifier
@@ -34,10 +47,10 @@ public class GTACasinoClicker {
         globalKeyListener = new GlobalKeyListener(keybinds);
         globalKeyListener.start();
     }
-    public static void stopKeyListener(){
+    public static void stopKeyListener() {
         globalKeyListener.interrupt();
     }
-    public static void setCoords(){
+    public static void setCoords() {
         PointerInfo pointerInfo = MouseInfo.getPointerInfo();
         Point point = pointerInfo.getLocation();
         x = (int) point.getX();

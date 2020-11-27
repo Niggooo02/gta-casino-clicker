@@ -105,10 +105,10 @@ public class GlobalKeyListener extends Thread {
         switch (arrayPos){
             case 0:
                 if(!GTACasinoClicker.configMode) {
-                    System.out.println("Screen detection active");
+                    System.out.println("Screen detection active\n");
                     new Thread().start();
                 } else {
-                    System.out.println("Config Mode active");
+                    System.out.println("Config Mode active\n");
                     GTACasinoClicker.setCoords();
                 }
                 break;
@@ -120,8 +120,10 @@ public class GlobalKeyListener extends Thread {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                System.out.println("Zeit zum beenden: " + (System.nanoTime() - nanoTime) / 1000000.0 + " Millisekunden");
+                System.out.println("Zeit zum Beenden: " + (System.nanoTime() - nanoTime) / 1000000.0 + " Millisekunden");
+                GTACasinoClicker.stopKeyListener();
                 System.exit(0);
+                break;
         }
     }
 

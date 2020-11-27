@@ -3,7 +3,7 @@ import java.awt.event.KeyEvent;
 
 public class Thread extends java.lang.Thread {
     private Color color;
-    private int time = 2050;
+    public static int time;
     @Override
     public void run() {
         Robot r = new GTACasinoClicker().bot;
@@ -30,5 +30,14 @@ public class Thread extends java.lang.Thread {
 
         double d = ((System.nanoTime() - sysNanoTime) / 1000000000.0);
         System.err.println("\nTaste wurde nach " + d + " Sekunden betätigt (+" + (d - (time / 1000.0)) * 1000 + " Millisekunden)\n");
+
+        try {
+            sleep(30000);    //30s
+        } catch (InterruptedException e){
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        GTACasinoClicker.stopKeyListener();
+        System.exit(0); //Nach 30s automatisch beenden
     }
 }
