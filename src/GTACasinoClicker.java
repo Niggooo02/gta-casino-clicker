@@ -13,15 +13,16 @@ public class GTACasinoClicker {
     private static Scanner sc;
 
     public static void main(String[] args) {
-        System.err.println("Kompatibilität: GTA V im Vollbildmodus, nur ein Monitor, FHD / 1920x1080px\n");
+        System.err.println("\nKompatibilität: GTA V im Vollbildmodus, nur ein Monitor, FHD / 1920x1080px\n");
         sc = new Scanner(System.in);
         System.out.print("Zeit, die gewartet werden soll (in Millisekunden, z.B. 2050): ");
         Thread.time = sc.nextInt();
+        System.out.println("\n\n");
 
         new GTACasinoClicker();
 
         System.out.println("\nHOTKEYS:");
-        System.out.println("'^':\t\t\tScreen Reader aktivieren");
+        System.out.println("'^':\t\tScreen Reader aktivieren");
         System.out.println("'Strg' + 'Y':\tGTA force quit");
         System.out.println();
     }
