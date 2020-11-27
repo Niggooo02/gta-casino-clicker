@@ -20,7 +20,6 @@ public class GTACasinoClicker {
 
         new GTACasinoClicker();
 
-
         System.out.println("\nHOTKEYS:");
         System.out.println("'^':\t\tScreen Reader aktivieren");
         System.out.println("'Strg' + 'Y':\tGTA force quit");
